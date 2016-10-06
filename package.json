@@ -1,31 +1,28 @@
 {
-  "name": "gamebotsai",
+  "name": "node-slack-bot",
   "version": "1.0.0",
-  "description": "slash command game system for slack",
-  "main": "server.js",
-  "dependencies": {
-    "slapp": "^1.2.0",
-      "body-parser": "^1.15.0",
-    "express": "^4.13.4",
-    "morgan": "^1.7.0"
-  },
-  "devDependencies": {},
+  "description": "A sample Beep Boop Node.js Slackbot",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NyeGuy/gamebotsai.git"
+    "url": "git+https://github.com/beepboophq/node-slack-bot.git"
   },
   "keywords": [
-    "slapp",
-    "beepboop",
+    "slackbot",
+    "bot",
     "slack"
   ],
-  "author": "nye warburton, built with beepboop slapp: https://github.com/BeepBoopHQ/slapp",
-  "license": "ISC",
+  "author": "",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NyeGuy/gamebotsai/issues"
+    "url": "https://github.com/beepboophq/node-slack-bot/issues"
   },
-  "homepage": "https://github.com/NyeGuy/gamebotsai#readme"
+  "homepage": "https://github.com/beepboophq/node-slack-bot#readme",
+  "dependencies": {
+    "beepboop-botkit": "^1.4.1",
+    "botkit": "~0.2.2"
+  }
 }
