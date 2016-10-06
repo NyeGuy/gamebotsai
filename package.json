@@ -1,0 +1,28 @@
+{
+  "name": "gamebotsai",
+  "version": "1.0.0",
+  "description": "slash command game system for slack",
+  "main": "server.js",
+  "dependencies": {
+    "slapp": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NyeGuy/gamebotsai.git"
+  },
+  "keywords": [
+    "slapp",
+    "beepboop",
+    "slack"
+  ],
+  "author": "nye warburton, built with beepboop slapp: https://github.com/BeepBoopHQ/slapp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NyeGuy/gamebotsai/issues"
+  },
+  "homepage": "https://github.com/NyeGuy/gamebotsai#readme"
+}
