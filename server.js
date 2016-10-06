@@ -7,7 +7,7 @@ const BeepBoopContext = require('slapp-context-beepboop')
 if (!process.env.PORT) throw Error('PORT missing but required')
 
 var slapp = Slapp({ 
-    convo_store: BeepBoomConvoStore(),
+    convo_store: BeepBoopConvoStore(),
     context: BeepBoopContext()
 })
 
