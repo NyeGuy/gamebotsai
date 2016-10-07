@@ -92,22 +92,22 @@ controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, mess
 
 // experimentations with slash commands 96 - 115
 
-controller.setupWebserver(process.env.port,function(err,webserver) {
-
-  controller.createWebhookEndpoints(controller.webserver);
-
-  controller.createOauthEndpoints(controller.webserver,function(err,req,res) {
-    if (err) {
-      res.status(500).send('ERROR: ' + err);
-    } else {
-      res.send('Success!');
-    }
-  });
-});
-
-controller.on('slash_command',function(bot,message) {
-
-  bot.replyPublic(message,'<@' + message.user + '> is cool!');
-  bot.replyPrivate(message,'*nudge nudge wink wink*');
-
-});
+//controller.setupWebserver(process.env.port,function(err,webserver) {
+//
+//  controller.createWebhookEndpoints(controller.webserver);
+//
+//  controller.createOauthEndpoints(controller.webserver,function(err,req,res) {
+//    if (err) {
+//      res.status(500).send('ERROR: ' + err);
+//    } else {
+//      res.send('Success!');
+//    }
+//  });
+//});
+//
+//controller.on('slash_command',function(bot,message) {
+//
+//  bot.replyPublic(message,'<@' + message.user + '> is cool!');
+//  bot.replyPrivate(message,'*nudge nudge wink wink*');
+//
+//});

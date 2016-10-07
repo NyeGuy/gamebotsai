@@ -1,15 +1,9 @@
-# starter-node-bot
+# Gamebots.ai
 
 ## Overview
-A simple starting point for creating a Beep Boop hostable, Node.js based Slack bot with botkit
+A game system for battling your coworkers on slack.
 
-Visit [Beep Boop](https://beepboophq.com/docs/article/overview) to get the scoop on the the Beep Boop hosting platform. The Slack API documentation can be found [here](https://api.slack.com/).
-
-## Assumptions
-* You have already signed up with [Beep Boop](https://beepboophq.com) and have a local fork of this project.
-* You have sufficient rights in your Slack team to configure a bot and generate/access a Slack API token.
-
-## Usage
+Built with Botkit and deployed with [Beep Boop](https://beepboophq.com/docs/article/overview) to get the scoop on the the Beep Boop hosting platform. The Slack API documentation can be found [here](https://api.slack.com/).
 
 ### Run locally
 	npm install
@@ -20,10 +14,6 @@ Things are looking good if the console prints something like:
     ** API CALL: https://slack.com/api/rtm.start
     ** BOT ID:  witty  ...attempting to connect to RTM!
     ** API CALL: https://slack.com/api/chat.postMessage
-
-### Run locally in Docker
-	docker build -t starter-node .`
-	docker run --rm -it -e SLACK_TOKEN=<YOUR SLACK API TOKEN> starter-node
 
 ### Run in BeepBoop
 If you have linked your local repo with the Beep Boop service (check [here](https://beepboophq.com/0_o/my-projects)), changes pushed to the remote master branch will automatically deploy.
