@@ -26,10 +26,10 @@ if (token) {
     }
 
  // dont know what the following is for - added for slash command 30 -33
-      if (!process.env.clientId || !process.env.clientSecret || !process.env.port) {
-  console.log('Error: Specify clientId clientSecret and port in environment');
-  process.exit(1);
-}
+//      if (!process.env.clientId || !process.env.clientSecret || !process.env.port) {
+//  console.log('Error: Specify clientId clientSecret and port in environment');
+//  process.exit(1);
+//}
       
       
     console.log('Connected to Slack RTM')
