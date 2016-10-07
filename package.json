@@ -1,14 +1,14 @@
 {
-  "name": "node-slack-bot",
+  "name": "Gamebots.ai",
   "version": "1.0.0",
-  "description": "A sample Beep Boop Node.js Slackbot",
+  "description": "Battle your coworkers in Slack",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beepboophq/node-slack-bot.git"
+    "url": ""
   },
   "keywords": [
     "slackbot",
@@ -18,9 +18,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/beepboophq/node-slack-bot/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/beepboophq/node-slack-bot#readme",
+  "homepage": "",
   "dependencies": {
     "beepboop-botkit": "^1.4.1",
     "botkit": "~0.2.2"
