@@ -27,13 +27,10 @@ if (token) {
 }
 
 controller.on('bot_channel_join', function (bot, message) {
-  bot.reply(message, "I've been added to your Channel. Let's Rock.")
+  bot.reply(message, "I've been added to your Channel. Type 'start' to begin.")
 })
 
-//controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
-//  bot.reply(message, 'Hello.')
-//})
-
+//
 controller.hears(['hello', 'hi', 'begin', 'start', 'do'], ['direct_message'], function (bot, message) {
   bot.reply(message, 'Greetings <@' + message.user + '>')
   bot.reply(message, 'Welcome to Gamebots.ai. You can type:')
@@ -57,16 +54,16 @@ controller.hears('help', ['direct_message', 'direct_mention'], function (bot, me
 })
 
 //This launches an attachment. Good for launch of the main screen. 
-controller.hears(['attachment'], ['direct_message', 'direct_mention'], function (bot, message) {
-  var text = 'Beep Beep Boop is a ridiculously simple hosting platform for your Slackbots.'
+controller.hears(['start'], ['direct_message', 'direct_mention'], function (bot, message) {
+  var text = 'Gamebots.ai is a cloud based game intelligence. Battle your coworkers for control of your slack channel.'
   var attachments = [{
     fallback: text,
-    pretext: 'We bring bots to life. :sunglasses: :thumbsup:',
-    title: 'Host, deploy and share your bot in seconds.',
+    pretext: 'The microgaming system from the future. :sunglasses: :thumbsup:',
+    title: 'Battle your coworkers.',
     image_url: 'https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png',
-    title_link: 'https://beepboophq.com/',
+    title_link: 'https://gamebots.ai/',
     text: text,
-    color: '#7CD197'
+    color: '#662572'
   }]
 
   bot.reply(message, {
@@ -78,4 +75,14 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
 
 controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
   bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
+})
+
+// experimentations with slash commands
+
+controller.on('slash_command',function(bot,message) {
+
+    // reply to slash command
+    bot.replyPublic(message,'Everyone can see this part of the slash command');
+    bot.replyPrivate(message,'Only the person who used the slash command can see this.');
+
 })
