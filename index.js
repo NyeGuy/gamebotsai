@@ -2,6 +2,13 @@ var Botkit = require('botkit')
 var token = process.env.SLACK_TOKEN
 
 var controller = Botkit.slackbot({
+    
+// added for slash command lines 7 thru 11
+    json_file_store: './db_slackbutton_slashcommand/',
+}).configureSlackApp({
+    clientId: process.env.clientId,
+    clientSecret: process.env.clientSecret,
+    scopes: ['commands'],
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
   debug: false
@@ -18,6 +25,13 @@ if (token) {
       throw new Error(err)
     }
 
+ // dont know what the following is for - added for slash command 30 -33
+      if (!process.env.clientId || !process.env.clientSecret || !process.env.port) {
+  console.log('Error: Specify clientId clientSecret and port in environment');
+  process.exit(1);
+}
+      
+      
     console.log('Connected to Slack RTM')
   })
 // Otherwise assume multi-team mode - setup beep boop resourcer connection
@@ -31,7 +45,7 @@ controller.on('bot_channel_join', function (bot, message) {
 })
 
 //
-controller.hears(['hello', 'hi', 'begin', 'start', 'do'], ['direct_message'], function (bot, message) {
+controller.hears(['hello', 'hi', 'begin'], ['direct_message'], function (bot, message) {
   bot.reply(message, 'Greetings <@' + message.user + '>')
   bot.reply(message, 'Welcome to Gamebots.ai. You can type:')
   bot.reply(message, 'profile: to see your gamebot stats')
@@ -77,12 +91,24 @@ controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, mess
   bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
 })
 
-// experimentations with slash commands
+// experimentations with slash commands 96 - 115
+
+controller.setupWebserver(process.env.port,function(err,webserver) {
+
+  controller.createWebhookEndpoints(controller.webserver);
+
+  controller.createOauthEndpoints(controller.webserver,function(err,req,res) {
+    if (err) {
+      res.status(500).send('ERROR: ' + err);
+    } else {
+      res.send('Success!');
+    }
+  });
+});
 
 controller.on('slash_command',function(bot,message) {
 
-    // reply to slash command
-    bot.replyPublic(message,'Everyone can see this part of the slash command');
-    bot.replyPrivate(message,'Only the person who used the slash command can see this.');
+  bot.replyPublic(message,'<@' + message.user + '> is cool!');
+  bot.replyPrivate(message,'*nudge nudge wink wink*');
 
-})
+});
