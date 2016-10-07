@@ -1,5 +1,4 @@
 var Botkit = require('botkit')
-
 var token = process.env.SLACK_TOKEN
 
 var controller = Botkit.slackbot({
@@ -23,21 +22,24 @@ if (token) {
   })
 // Otherwise assume multi-team mode - setup beep boop resourcer connection
 } else {
-  console.log('Starting in Beep Boop multi-team mode')
+  console.log('I\'ve been connected for multi-team mode.')
   require('beepboop-botkit').start(controller, { debug: true })
 }
 
 controller.on('bot_channel_join', function (bot, message) {
-  bot.reply(message, "I'm here!")
+  bot.reply(message, "I've been added to your Channel. Let's Rock.")
 })
 
-controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
-  bot.reply(message, 'Hello.')
-})
+//controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
+//  bot.reply(message, 'Hello.')
+//})
 
-controller.hears(['hello', 'hi'], ['direct_message'], function (bot, message) {
-  bot.reply(message, 'Hello.')
-  bot.reply(message, 'It\'s nice to talk to you directly.')
+controller.hears(['hello', 'hi', 'begin', 'start', 'do'], ['direct_message'], function (bot, message) {
+  bot.reply(message, 'Greetings <@' + message.user + '>')
+  bot.reply(message, 'Welcome to Gamebots.ai. You can type:')
+  bot.reply(message, 'profile: to see your gamebot stats')
+  bot.reply(message, 'leaderboard: to see active gamebot rankings')
+  bot.reply(message, 'help: to list gamebot commands')
 })
 
 controller.hears('.*', ['mention'], function (bot, message) {
@@ -45,14 +47,16 @@ controller.hears('.*', ['mention'], function (bot, message) {
 })
 
 controller.hears('help', ['direct_message', 'direct_mention'], function (bot, message) {
-  var help = 'I will respond to the following messages: \n' +
-      '`bot hi` for a simple message.\n' +
-      '`bot attachment` to see a Slack attachment message.\n' +
+  var help = 'These are the gamebot commands: \n' +
+      '`/bomb` Sets an Electo bomb with a three minute delay.\n' +
+      '`/laser` Charges a proton laser with a one minute delay.\n' +
       '`@<your bot\'s name>` to demonstrate detecting a mention.\n' +
-      '`bot help` to see this again.'
+      '`/sheild` to raise a plasma shield for five minutes.\n' +
+      '`@<your bot\'s name>` to demonstrate detecting a mention.\n'
   bot.reply(message, help)
 })
 
+//This launches an attachment. Good for launch of the main screen. 
 controller.hears(['attachment'], ['direct_message', 'direct_mention'], function (bot, message) {
   var text = 'Beep Beep Boop is a ridiculously simple hosting platform for your Slackbots.'
   var attachments = [{
