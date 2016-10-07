@@ -40,7 +40,7 @@ if (token) {
 }
 
 controller.on('bot_channel_join', function (bot, message) {
-  bot.reply(message, "I've been added to your Channel. Type 'start' to begin.")
+  bot.reply(message, "Gamebots have been added to your Channel. Type 'start' to begin combat.")
 })
 
 //
@@ -52,17 +52,12 @@ controller.hears(['hello', 'hi', 'begin'], ['direct_message'], function (bot, me
   bot.reply(message, 'help: to list gamebot commands')
 })
 
-controller.hears('.*', ['mention'], function (bot, message) {
-  bot.reply(message, 'You really do care about me. :heart:')
-})
-
 controller.hears('help', ['direct_message', 'direct_mention'], function (bot, message) {
   var help = 'These are the gamebot commands: \n' +
-      '`/bomb` Sets an Electo bomb with a three minute delay.\n' +
-      '`/laser` Charges a proton laser with a one minute delay.\n' +
-      '`@<your bot\'s name>` to demonstrate detecting a mention.\n' +
-      '`/sheild` to raise a plasma shield for five minutes.\n' +
-      '`@<your bot\'s name>` to demonstrate detecting a mention.\n'
+      '`/bomb (+ @user)` Sets an Electo bomb with a three minute delay.\n' +
+      '`/laser (+ @user)` Charges a proton laser with a one minute delay.\n' +
+      '`/shield (+ @user)` to raise a plasma shield to defend for five minutes.\n'
+     '`/mine + word` set a key word to trigger a 1 minute hydrogen mine.\n'
   bot.reply(message, help)
 })
 
