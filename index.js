@@ -1,14 +1,13 @@
 var Botkit = require('botkit')
 var token = process.env.SLACK_TOKEN
 
-var controller = Botkit.slackbot({
-    
+var controller = Botkit.slackbot({ 
 // added for slash command lines 7 thru 11
-    json_file_store: './db_slackbutton_slashcommand/',
-}).configureSlackApp({
-    clientId: process.env.clientId,
-    clientSecret: process.env.clientSecret,
-    scopes: ['commands'],
+//    json_file_store: './db_slackbutton_slashcommand/',
+//}).configureSlackApp({
+//    clientId: process.env.clientId,
+//    clientSecret: process.env.clientSecret,
+//    scopes: ['commands'],
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
   debug: false
