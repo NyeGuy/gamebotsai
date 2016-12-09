@@ -1,4 +1,5 @@
 # Gamebots.ai
+#THIS IS STILL WIP - incomplete
 
 ## Overview
 A game system for battling your coworkers on slack.
